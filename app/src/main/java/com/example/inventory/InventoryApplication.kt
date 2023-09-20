@@ -19,7 +19,9 @@ package com.example.inventory
 import android.app.Application
 import com.example.inventory.data.AppContainer
 import com.example.inventory.data.AppDataContainer
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class InventoryApplication : Application() {
 
     /**
