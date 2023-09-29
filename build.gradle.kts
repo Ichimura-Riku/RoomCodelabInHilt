@@ -27,9 +27,10 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.8.21" apply false
     id("com.google.dagger.hilt.android") version "2.48" apply false
 //    hilt as kapt to ksp
+//    id("com.google.devtools.ksp") version "1.8.20-1.0.9"
     id("com.google.devtools.ksp") version "1.9.0-1.0.12"
     id("org.jetbrains.kotlin.jvm") version "1.9.0"
-    kotlin("kapt") version "1.9.10"
+//    kotlin("kapt") version "1.9.0"
 
 }
 

@@ -65,7 +65,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
     packaging {
         resources {
@@ -99,19 +99,22 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
     // hilt
-//    implementation("com.google.dagger:hilt-android:2.48")
-//    kapt("com.google.dagger:hilt-android-compiler:2.48")
-//    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-compiler:2.48")
+    ksp("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    // For instrumentation tests
-    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.48")
-    kspAndroidTest("com.google.dagger:hilt-compiler:2.48")
 
-    // For local unit tests
-    testImplementation("com.google.dagger:hilt-android-testing:2.48")
-    kspTest("com.google.dagger:hilt-compiler:2.48")
+//    implementation("com.google.dagger:hilt-android:2.48")
+//    ksp("com.google.dagger:hilt-compiler:2.48")
+//
+//    // For instrumentation tests
+//    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.48")
+//    kspAndroidTest("com.google.dagger:hilt-compiler:2.48")
+//
+//    // For local unit tests
+//    testImplementation("com.google.dagger:hilt-android-testing:2.48")
+//    kspTest("com.google.dagger:hilt-compiler:2.48")
+
 }
 
 //kapt {
