@@ -16,6 +16,14 @@
 
 @file:Suppress("UnstableApiUsage")
 
+import org.gradle.internal.impldep.org.eclipse.jgit.util.RawCharUtil.trimTrailingWhitespace
+import org.jetbrains.kotlin.builtins.StandardNames.FqNames.target
+
+// spotless
+//apply(from = "$project.rootDir/spotless.gradle")
+
+
+
 
 
 plugins {

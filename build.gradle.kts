@@ -32,6 +32,14 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.0"
 //    kotlin("kapt") version "1.9.0"
 
+//    spotless and ktlint
+    id("org.jlleitschuh.gradle.ktlint") version "11.6.0"
+    id("com.diffplug.spotless") version "6.22.0"
+}
+spotless {
+    java {
+        googleJavaFormat()
+    }
 }
 
 //tasks.register("clean", Delete::class) {
