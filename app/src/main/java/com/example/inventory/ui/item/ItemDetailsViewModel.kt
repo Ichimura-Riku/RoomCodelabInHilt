@@ -52,7 +52,7 @@ class ItemDetailsViewModel @Inject constructor(
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
-                initialValue = ItemDetailsUiState()
+                initialValue = ItemDetailsUiState(),
             )
 
     /**
@@ -84,5 +84,5 @@ class ItemDetailsViewModel @Inject constructor(
  */
 data class ItemDetailsUiState(
     val outOfStock: Boolean = true,
-    val itemDetails: ItemDetails = ItemDetails()
+    val itemDetails: ItemDetails = ItemDetails(),
 )

@@ -72,7 +72,7 @@ fun ItemDetailsScreen(
     navigateToEditItem: (Int) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: ItemDetailsViewModel = hiltViewModel()
+    viewModel: ItemDetailsViewModel = hiltViewModel(),
 ) {
     val uiState = viewModel.uiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
@@ -81,13 +81,14 @@ fun ItemDetailsScreen(
             InventoryTopAppBar(
                 title = stringResource(ItemDetailsDestination.titleRes),
                 canNavigateBack = true,
-                navigateUp = navigateBack
+                navigateUp = navigateBack,
             )
-        }, floatingActionButton = {
+        },
+        floatingActionButton = {
             FloatingActionButton(
                 onClick = { navigateToEditItem(uiState.value.itemDetails.id) },
                 shape = MaterialTheme.shapes.medium,
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large)),
 
             ) {
                 Icon(
@@ -95,7 +96,8 @@ fun ItemDetailsScreen(
                     contentDescription = stringResource(R.string.edit_item_title),
                 )
             }
-        }, modifier = modifier
+        },
+        modifier = modifier,
     ) { innerPadding ->
         ItemDetailsBody(
             itemDetailsUiState = uiState.value,
@@ -112,7 +114,7 @@ fun ItemDetailsScreen(
             },
             modifier = Modifier
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()),
         )
     }
 }
@@ -122,28 +124,29 @@ private fun ItemDetailsBody(
     itemDetailsUiState: ItemDetailsUiState,
     onSellItem: () -> Unit,
     onDelete: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
         ItemDetails(
-            item = itemDetailsUiState.itemDetails.toItem(), modifier = Modifier.fillMaxWidth()
+            item = itemDetailsUiState.itemDetails.toItem(),
+            modifier = Modifier.fillMaxWidth(),
         )
         Button(
             onClick = onSellItem,
             modifier = Modifier.fillMaxWidth(),
             shape = MaterialTheme.shapes.small,
-            enabled = !itemDetailsUiState.outOfStock
+            enabled = !itemDetailsUiState.outOfStock,
         ) {
             Text(stringResource(R.string.sell))
         }
         OutlinedButton(
             onClick = { deleteConfirmationRequired = true },
             shape = MaterialTheme.shapes.small,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.delete))
         }
@@ -154,28 +157,29 @@ private fun ItemDetailsBody(
                     onDelete()
                 },
                 onDeleteCancel = { deleteConfirmationRequired = false },
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
             )
         }
     }
 }
 
-
 @Composable
 fun ItemDetails(
-    item: Item, modifier: Modifier = Modifier
+    item: Item,
+    modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = modifier, colors = CardDefaults.cardColors(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-        )
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        ),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.padding_medium)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
         ) {
             ItemDetailsRow(
                 labelResID = R.string.item,
@@ -183,9 +187,9 @@ fun ItemDetails(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen
-                            .padding_medium
-                    )
-                )
+                            .padding_medium,
+                    ),
+                ),
             )
             ItemDetailsRow(
                 labelResID = R.string.quantity_in_stock,
@@ -193,9 +197,9 @@ fun ItemDetails(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen
-                            .padding_medium
-                    )
-                )
+                            .padding_medium,
+                    ),
+                ),
             )
             ItemDetailsRow(
                 labelResID = R.string.price,
@@ -203,18 +207,19 @@ fun ItemDetails(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
                         id = R.dimen
-                            .padding_medium
-                    )
-                )
+                            .padding_medium,
+                    ),
+                ),
             )
         }
-
     }
 }
 
 @Composable
 private fun ItemDetailsRow(
-    @StringRes labelResID: Int, itemDetail: String, modifier: Modifier = Modifier
+    @StringRes labelResID: Int,
+    itemDetail: String,
+    modifier: Modifier = Modifier,
 ) {
     Row(modifier = modifier) {
         Text(text = stringResource(labelResID))
@@ -225,9 +230,12 @@ private fun ItemDetailsRow(
 
 @Composable
 private fun DeleteConfirmationDialog(
-    onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
+    onDeleteConfirm: () -> Unit,
+    onDeleteCancel: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    AlertDialog(onDismissRequest = { /* Do nothing */ },
+    AlertDialog(
+        onDismissRequest = { /* Do nothing */ },
         title = { Text(stringResource(R.string.attention)) },
         text = { Text(stringResource(R.string.delete_question)) },
         modifier = modifier,
@@ -240,15 +248,21 @@ private fun DeleteConfirmationDialog(
             TextButton(onClick = onDeleteConfirm) {
                 Text(text = stringResource(R.string.yes))
             }
-        })
+        },
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ItemDetailsScreenPreview() {
     InventoryTheme {
-        ItemDetailsBody(ItemDetailsUiState(
-            outOfStock = true, itemDetails = ItemDetails(1, "Pen", "$100", "10")
-        ), onSellItem = {}, onDelete = {})
+        ItemDetailsBody(
+            ItemDetailsUiState(
+                outOfStock = true,
+                itemDetails = ItemDetails(1, "Pen", "$100", "10"),
+            ),
+            onSellItem = {},
+            onDelete = {},
+        )
     }
 }

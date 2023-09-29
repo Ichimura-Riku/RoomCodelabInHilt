@@ -52,7 +52,7 @@ fun InventoryTopAppBar(
     canNavigateBack: Boolean,
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    navigateUp: () -> Unit = {}
+    navigateUp: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         title = { Text(title) },
@@ -63,10 +63,10 @@ fun InventoryTopAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Filled.ArrowBack,
-                        contentDescription = stringResource(string.back_button)
+                        contentDescription = stringResource(string.back_button),
                     )
                 }
             }
-        }
+        },
     )
 }

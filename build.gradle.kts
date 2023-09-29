@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.builtins.StandardNames.FqNames.target
+import java.util.Calendar.YEAR
+
 /*
  * Copyright (C) 2023 The Android Open Source Project
  *
@@ -34,14 +37,23 @@ plugins {
 
 //    spotless and ktlint
     id("org.jlleitschuh.gradle.ktlint") version "11.6.0"
-    id("com.diffplug.spotless") version "6.22.0"
+    id("com.diffplug.spotless") version "6.21.0"
 }
 spotless {
-    java {
-        googleJavaFormat()
+    kotlin {
+        // by default the target is every '.kt' and '.kts` file in the java sourcesets
+//        ktfmt()    // has its own section below
+        ktlint() // has its own section below
+//        diktat()   // has its own section below
+//        prettier() // has its own section below
+        licenseHeader("/* (C) $YEAR */") // or licenseHeaderFile
+    }
+    kotlinGradle {
+        target("*.gradle.kts", "app/src/main/java/com/example/inventory/**") // default target for kotlinGradle
+        ktlint() // or ktfmt() or prettier()
     }
 }
 
-//tasks.register("clean", Delete::class) {
+// tasks.register("clean", Delete::class) {
 //    delete(rootProject.buildDir)
-//}
+// }

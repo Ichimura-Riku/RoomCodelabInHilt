@@ -42,7 +42,7 @@ class HomeViewModel @Inject constructor(itemsRepository: ItemsRepository) : View
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
-                initialValue = HomeUiState()
+                initialValue = HomeUiState(),
             )
 
     companion object {
