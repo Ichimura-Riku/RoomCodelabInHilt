@@ -20,9 +20,4 @@ object Modules{
         return OfflineItemsRepository(InventoryDatabase.getDatabase(context).itemDao())
     }
 
-
-
-
 }
-
-
