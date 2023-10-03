@@ -37,10 +37,10 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.inventory.InventoryTopAppBar
 import com.example.inventory.R
-import com.example.inventory.ui.AppViewModelProvider
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 import kotlinx.coroutines.launch
@@ -58,7 +58,7 @@ fun ItemEntryScreen(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     canNavigateBack: Boolean = true,
-    viewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    viewModel: ItemEntryViewModel = hiltViewModel()
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
