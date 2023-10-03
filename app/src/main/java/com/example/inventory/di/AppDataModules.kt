@@ -13,16 +13,10 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object AppDataModules{
+object AppDataModules {
     @Provides
     @Singleton
     fun providesItemsRepository(@ApplicationContext context: Context): ItemsRepository {
         return OfflineItemsRepository(InventoryDatabase.getDatabase(context).itemDao())
     }
-
-
-
-
 }
-
-

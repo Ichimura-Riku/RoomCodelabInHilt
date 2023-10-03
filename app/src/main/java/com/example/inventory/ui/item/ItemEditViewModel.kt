@@ -35,7 +35,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ItemEditViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val itemsRepository: ItemsRepository
+    private val itemsRepository: ItemsRepository,
 ) : ViewModel() {
 
     /**

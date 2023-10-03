@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.builtins.StandardNames.FqNames.target
+import java.util.Calendar.YEAR
+
 /*
  * Copyright (C) 2023 The Android Open Source Project
  *
@@ -26,10 +29,32 @@ plugins {
     id("com.android.library") version "8.1.1" apply false
     id("org.jetbrains.kotlin.android") version "1.8.21" apply false
     id("com.google.dagger.hilt.android") version "2.48" apply false
+    
+    // hilt
+    id("com.google.devtools.ksp") version "1.9.0-1.0.12"           
+    id("org.jetbrains.kotlin.jvm") version "1.9.0"                  
 
-    id("com.google.devtools.ksp") version "1.9.0-1.0.12"            // 追記
-    id("org.jetbrains.kotlin.jvm") version "1.9.0"                  // 追記
+
+//    spotless and ktlint
+    id("org.jlleitschuh.gradle.ktlint") version "11.6.0"
+    id("com.diffplug.spotless") version "6.21.0"
 }
-//tasks.register("clean", Delete::class) {
+
+spotless {
+    kotlin {
+        // by default the target is every '.kt' and '.kts` file in the java sourcesets
+//        ktfmt()    // has its own section below
+        ktlint() // has its own section below
+//        diktat()   // has its own section below
+//        prettier() // has its own section below
+        licenseHeader("/* (C) $YEAR */") // or licenseHeaderFile
+    }
+    kotlinGradle {
+        target("*.gradle.kts", "app/src/main/java/com/example/inventory/**") // default target for kotlinGradle
+        ktlint() // or ktfmt() or prettier()
+    }
+}
+
+// tasks.register("clean", Delete::class) {
 //    delete(rootProject.buildDir)
-//}
+// }

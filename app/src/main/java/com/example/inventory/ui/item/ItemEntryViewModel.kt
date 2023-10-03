@@ -68,7 +68,7 @@ class ItemEntryViewModel @Inject constructor(private val itemsRepository: ItemsR
  */
 data class ItemUiState(
     val itemDetails: ItemDetails = ItemDetails(),
-    val isEntryValid: Boolean = false
+    val isEntryValid: Boolean = false,
 )
 
 data class ItemDetails(
@@ -87,7 +87,7 @@ fun ItemDetails.toItem(): Item = Item(
     id = id,
     name = name,
     price = price.toDoubleOrNull() ?: 0.0,
-    quantity = quantity.toIntOrNull() ?: 0
+    quantity = quantity.toIntOrNull() ?: 0,
 )
 
 fun Item.formatedPrice(): String {
@@ -99,7 +99,7 @@ fun Item.formatedPrice(): String {
  */
 fun Item.toItemUiState(isEntryValid: Boolean = false): ItemUiState = ItemUiState(
     itemDetails = this.toItemDetails(),
-    isEntryValid = isEntryValid
+    isEntryValid = isEntryValid,
 )
 
 /**
@@ -109,5 +109,5 @@ fun Item.toItemDetails(): ItemDetails = ItemDetails(
     id = id,
     name = name,
     price = price.toString(),
-    quantity = quantity.toString()
+    quantity = quantity.toString(),
 )

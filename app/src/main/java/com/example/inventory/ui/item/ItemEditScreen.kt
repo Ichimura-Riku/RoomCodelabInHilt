@@ -44,7 +44,7 @@ fun ItemEditScreen(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: ItemEditViewModel = hiltViewModel()
+    viewModel: ItemEditViewModel = hiltViewModel(),
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
@@ -52,10 +52,10 @@ fun ItemEditScreen(
             InventoryTopAppBar(
                 title = stringResource(ItemEditDestination.titleRes),
                 canNavigateBack = true,
-                navigateUp = onNavigateUp
+                navigateUp = onNavigateUp,
             )
         },
-        modifier = modifier
+        modifier = modifier,
     ) { innerPadding ->
         ItemEntryBody(
             itemUiState = viewModel.itemUiState,
@@ -70,7 +70,7 @@ fun ItemEditScreen(
                     navigateBack()
                 }
             },
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
         )
     }
 }
