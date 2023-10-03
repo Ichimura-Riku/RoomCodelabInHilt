@@ -29,16 +29,17 @@ plugins {
     id("com.android.library") version "8.1.1" apply false
     id("org.jetbrains.kotlin.android") version "1.8.21" apply false
     id("com.google.dagger.hilt.android") version "2.48" apply false
-//    hilt as kapt to ksp
-//    id("com.google.devtools.ksp") version "1.8.20-1.0.9"
-    id("com.google.devtools.ksp") version "1.9.0-1.0.12"
-    id("org.jetbrains.kotlin.jvm") version "1.9.0"
-//    kotlin("kapt") version "1.9.0"
+    
+    // hilt
+    id("com.google.devtools.ksp") version "1.9.0-1.0.12"           
+    id("org.jetbrains.kotlin.jvm") version "1.9.0"                  
+
 
 //    spotless and ktlint
     id("org.jlleitschuh.gradle.ktlint") version "11.6.0"
     id("com.diffplug.spotless") version "6.21.0"
 }
+
 spotless {
     kotlin {
         // by default the target is every '.kt' and '.kts` file in the java sourcesets
