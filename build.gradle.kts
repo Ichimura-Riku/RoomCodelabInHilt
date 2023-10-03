@@ -22,14 +22,14 @@ buildscript {
 }
 
 plugins {
-    id("com.android.application") version "8.0.2" apply false
-    id("com.android.library") version "8.0.2" apply false
+    id("com.android.application") version "8.1.1" apply false
+    id("com.android.library") version "8.1.1" apply false
     id("org.jetbrains.kotlin.android") version "1.8.21" apply false
     id("com.google.dagger.hilt.android") version "2.48" apply false
+
     id("com.google.devtools.ksp") version "1.9.0-1.0.12"            // 追記
     id("org.jetbrains.kotlin.jvm") version "1.9.0"                  // 追記
 }
-
 //tasks.register("clean", Delete::class) {
 //    delete(rootProject.buildDir)
 //}
